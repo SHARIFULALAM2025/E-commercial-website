@@ -12,7 +12,7 @@ import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import MenuIcon from '@mui/icons-material/Menu'
 import { pages, settingLink } from './NavbarLink'
-import { NavLink } from 'react-router'
+import { Link, NavLink } from 'react-router'
 import DarkMode from '../../DarkMode/DarkMode'
 import { AuthContext } from '../../Authentication/AuthContext'
 import SearchBar from './SearchBar'
@@ -195,10 +195,12 @@ const Navbar = () => {
               </Menu>
             </Box>
           ) : (
-            <ReusableButton
-              text="register"
-              variant="contained"
-            ></ReusableButton>
+            <Link to="register">
+              <ReusableButton
+                text="register"
+                variant="contained"
+              ></ReusableButton>
+            </Link>
           )}
         </Toolbar>
       </AppBar>
