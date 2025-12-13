@@ -7,7 +7,7 @@ const Social = () => {
     <div>
       <ReusableButton
         startIcon={<FcGoogle></FcGoogle>}
-        sx={{ width: '35ch' }}
+        sx={{ width: '40ch' }}
         variant="contained"
               text="Sign up with Google"
               color="success"
