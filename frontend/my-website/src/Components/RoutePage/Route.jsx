@@ -1,0 +1,16 @@
+import { createBrowserRouter } from 'react-router'
+import Root from '../Layout/RootLayout/Root'
+import Home from '../Pages/Home/Home'
+import About from '../Pages/About/About'
+const router = createBrowserRouter([
+    {
+        path: "/",
+        Component: Root,
+        children: [
+            {index:true,Component:Home},
+            {path:"/about",Component:About},
+            {path:"/contact",Component:About}
+        ]
+    }
+])
+export { router }
