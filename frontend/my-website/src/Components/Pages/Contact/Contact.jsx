@@ -14,7 +14,7 @@ const Contact = () => {
   const { theme } = useContext(AuthContext)
   return (
     <div className="grid md:grid-cols-12 gap-8 dark:bg-black">
-      <div className="col-span-2 p-3 space-y-3 shadow-xl rounded dark:bg-black">
+      <div className="col-span-2 p-2 space-y-3 shadow-xl rounded dark:bg-black">
         <div className="flex gap-2 ">
           <h1 className="">
             <PermPhoneMsgIcon

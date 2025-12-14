@@ -6,10 +6,12 @@ import AuthLayout from '../Layout/AuthenticationLayout/AuthLayout'
 import Login from '../Header/Navbar/Login'
 import Register from '../Header/Navbar/Register'
 import Contact from '../Pages/Contact/Contact'
+import Error from '../Error/Error'
 const router = createBrowserRouter([
     {
         path: "/",
         Component: Root,
+        errorElement:<Error></Error>,
         children: [
             {index:true,Component:Home},
             {path:"/about",Component:About},
