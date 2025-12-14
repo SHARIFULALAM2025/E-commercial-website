@@ -5,6 +5,7 @@ import About from '../Pages/About/About'
 import AuthLayout from '../Layout/AuthenticationLayout/AuthLayout'
 import Login from '../Header/Navbar/Login'
 import Register from '../Header/Navbar/Register'
+import Contact from '../Pages/Contact/Contact'
 const router = createBrowserRouter([
     {
         path: "/",
@@ -12,7 +13,7 @@ const router = createBrowserRouter([
         children: [
             {index:true,Component:Home},
             {path:"/about",Component:About},
-            {path:"/contact",Component:About}
+            {path:"/contact",Component:Contact}
         ]
     },
     {
