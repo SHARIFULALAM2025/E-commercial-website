@@ -16,6 +16,15 @@ const client = new MongoClient(uri, {
 });
 async function run() {
     try {
+        const database = client.db('business');
+        const AboutCardData = database.collection('card');
+
+        /* about page data save */
+        app.post("/about/card", async(req, res) => {
+            const cardData = req.body;
+            const result = await AboutCardData.insertOne(cardData)
+            res.send(result)
+        })
 
 
 

@@ -8,15 +8,16 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import Input from '@mui/material/Input'
 import ReusableButton from '../../ReusableComponent/ReusableButton'
 import Social from './Social'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import Tooltip from '@mui/material/Tooltip'
 
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 import { useContext } from 'react'
 import { AuthContext } from '../../Authentication/AuthContext'
-
+import { useForm } from 'react-hook-form'
+import { uploadImage } from '../../ReusableComponent/ReusableUploadImage'
 const Register = () => {
-  const { theme } = useContext(AuthContext)
+  const { theme, createUser, updateUserImageProfile } = useContext(AuthContext)
   const [showPassword, setShowPassword] = React.useState(false)
 
   const handleClickShowPassword = () => setShowPassword((show) => !show)
@@ -27,6 +28,26 @@ const Register = () => {
 
   const handleMouseUpPassword = (event) => {
     event.preventDefault()
+  }
+  /* data collect using react hook form */
+const navigate=useNavigate()
+  const { register, handleSubmit,reset } = useForm()
+  const handelSignUp = async (data) => {
+    const { image, email, password, name } = data
+    const myImage = image[0]
+
+    try {
+      const uploadImage2 = await uploadImage(myImage)
+      const result = await createUser(email, password)
+      await updateUserImageProfile(name, uploadImage2)
+      console.log(result, data)
+      navigate("/")
+      reset()
+
+    } catch (error) {
+      const ErrorMessage = error.message
+      console.log(ErrorMessage)
+    }
   }
   return (
     <div className="grid md:grid-cols-2 grid-cols-1 min-h-30rem   place-content-center items-center">
@@ -45,7 +66,7 @@ const Register = () => {
           <h1 className="text-[#000000] dark:text-white text-center text-xs font-semibold">
             Enter your details below
           </h1>
-          <form action="">
+          <form onSubmit={handleSubmit(handelSignUp)}>
             <div className="">
               <FormControl
                 sx={{
@@ -72,7 +93,7 @@ const Register = () => {
                 <InputLabel sx={{}} htmlFor="standard-adornment-password">
                   Name
                 </InputLabel>
-                <Input id="standard-adornment-password" type="text" />
+                <Input {...register('name')} type="text" />
               </FormControl>
             </div>
             <div className="">
@@ -100,7 +121,7 @@ const Register = () => {
                 <InputLabel htmlFor="standard-adornment-password">
                   Phone Number
                 </InputLabel>
-                <Input id="standard-adornment-password" type="number" />
+                <Input {...register('number')} type="number" />
               </FormControl>
             </div>
             <div className="">
@@ -128,7 +149,7 @@ const Register = () => {
                 <InputLabel htmlFor="standard-adornment-password">
                   Email
                 </InputLabel>
-                <Input id="standard-adornment-password" type="email" />
+                <Input {...register('email')} type="email" />
               </FormControl>
             </div>
             <div className="">
@@ -157,7 +178,7 @@ const Register = () => {
                   Password
                 </InputLabel>
                 <Input
-                  id="standard-adornment-password"
+                  {...register('password')}
                   type={showPassword ? 'text' : 'password'}
                   endAdornment={
                     <InputAdornment position="end">
@@ -210,7 +231,7 @@ const Register = () => {
               >
                 <Tooltip title="Chose Your Image." arrow>
                   <Input
-                    id="standard-adornment-password"
+                    {...register('image')}
                     onChange={(event) => console.log(event.target.files)}
                     type="file"
                     startAdornment={
@@ -228,6 +249,7 @@ const Register = () => {
             </div>
             <div className="">
               <ReusableButton
+                type="submit"
                 text="Create Account"
                 sx={{ width: '40ch' }}
                 variant="contained"

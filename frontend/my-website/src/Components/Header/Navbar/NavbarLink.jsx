@@ -25,8 +25,8 @@ const pages = [
 const settingLink = [
   {
     id: 1,
-    path: '/profile',
-    Name: 'Profile',
+    path: '/account',
+    Name: 'Account',
     icon: <AccountCircleIcon></AccountCircleIcon>,
   },
 ]

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import Social from './Social'
 import ReusableButton from '../../ReusableComponent/ReusableButton'
 import InputAdornment from '@mui/material/InputAdornment'
@@ -10,9 +10,10 @@ import IconButton from '@mui/material/IconButton'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import { AuthContext } from '../../Authentication/AuthContext'
+import { useForm } from 'react-hook-form'
 const Login = () => {
   const [showPassword, setShowPassword] = React.useState(false)
-  const { theme } = useContext(AuthContext)
+  const { theme, loginInUser } = useContext(AuthContext)
   const handleClickShowPassword = () => setShowPassword((show) => !show)
 
   const handleMouseDownPassword = (event) => {
@@ -21,6 +22,13 @@ const Login = () => {
 
   const handleMouseUpPassword = (event) => {
     event.preventDefault()
+  }
+const navigate=useNavigate()
+  const { register, handleSubmit } = useForm()
+  const handelSignIn = async (data) => {
+    const {email,password}=data
+    await loginInUser(email, password)
+    navigate("/")
   }
   return (
     <div className="grid md:grid-cols-2 grid-cols-1 min-h-30rem   place-content-center items-center">
@@ -39,7 +47,7 @@ const Login = () => {
           <h1 className="text-[#000000] dark:text-white text-center text-xs font-semibold">
             Enter your details below
           </h1>
-          <form action="">
+          <form onSubmit={handleSubmit(handelSignIn)}>
             <div className="">
               <FormControl
                 sx={{
@@ -65,7 +73,7 @@ const Login = () => {
                 <InputLabel htmlFor="standard-adornment-password">
                   Email
                 </InputLabel>
-                <Input id="standard-adornment-password" type="email" />
+                <Input {...register('email')} type="email" />
               </FormControl>
             </div>
             <div className="">
@@ -94,7 +102,7 @@ const Login = () => {
                   Password
                 </InputLabel>
                 <Input
-                  id="standard-adornment-password"
+                  {...register('password')}
                   type={showPassword ? 'text' : 'password'}
                   endAdornment={
                     <InputAdornment position="end">
@@ -125,6 +133,7 @@ const Login = () => {
             </div>{' '}
             <div className="">
               <ReusableButton
+                type="submit"
                 text="Log in"
                 sx={{ width: '40ch' }}
                 variant="contained"

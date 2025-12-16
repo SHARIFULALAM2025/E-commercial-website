@@ -9,8 +9,9 @@ const ReusableButton = ({
   onClick,
   disabled,
   fullWidth,
-    text,
-  sx
+  text,
+  sx,
+  type,
 }) => {
   return (
     <Button
@@ -20,8 +21,9 @@ const ReusableButton = ({
       variant={variant}
       endIcon={endIcon}
       disabled={disabled}
-          fullWidth={fullWidth}
-          sx={sx}
+      fullWidth={fullWidth}
+      sx={sx}
+      type={type}
     >
       {text}
     </Button>

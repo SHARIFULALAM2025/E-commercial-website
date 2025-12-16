@@ -40,7 +40,7 @@ const Navbar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
   }
-  const { theme ,user} = useContext(AuthContext)
+  const { theme, user } = useContext(AuthContext)
 
   //   const [role] = useRole()
   //   const settingLink = setting.filter(
@@ -163,7 +163,11 @@ const Navbar = () => {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings" arrow>
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar referrerPolicy="no-referrer" alt="" src="" />
+                  <Avatar
+                    referrerPolicy="no-referrer"
+                    alt=""
+                    src={user?.photoURL}
+                  />
                 </IconButton>
               </Tooltip>
               <Menu
