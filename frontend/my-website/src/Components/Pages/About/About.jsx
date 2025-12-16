@@ -10,26 +10,11 @@ import FacebookIcon from '@mui/icons-material/Facebook'
 // import required modules
 import { Autoplay, FreeMode, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import Delivery from '../Home/Delevery/Delivery'
 
 const About = () => {
     const [active, setActive] = useState(1)
-    const info = [
-      {
-        title: 'FREE AND FAST DELIVERY',
-        image: 'https://i.ibb.co.com/HfRJdZGj/Services-4.png',
-        des: 'Free delivery for all orders over $140',
-      },
-      {
-        title: '24/7 CUSTOMER SERVICE ',
-        image: 'https://i.ibb.co.com/gbtxwtFC/Services-5.png',
-        des: 'Friendly 24/7 customer support',
-      },
-      {
-        title: 'MONEY BACK GUARANTEE',
-        image: ' https://i.ibb.co.com/dwkt2KdS/Services-6.png',
-        des: 'We reurn money within 30 days',
-      },
-    ]
+    
   const data = [
     {
       title: '10.5k ',
@@ -163,17 +148,7 @@ const About = () => {
           ))}
         </Swiper>
       </div>
-      <div className="grid grid-cols-3 md:mt-28">
-        {info.map((item, index) => (
-          <div key={index} className="text-center">
-            <figure>
-              <img src={item.image} alt="" className="mx-auto" />
-            </figure>
-            <h1 className="dark:text-white">{item.title} </h1>
-            <h1 className="dark:text-white">{item.des}</h1>
-          </div>
-        ))}
-      </div>
+      <Delivery></Delivery>
     </div>
   )
 }

@@ -1,9 +1,11 @@
 import * as React from 'react'
-// import Account from '../../Layout/AccountLayout/Account'
+import Delivery from './Delevery/Delivery'
+import Arrival from './Arrival/Arrival'
 
 const HomePage = () => {
   return <div className="">
-    {/* <Account></Account> */}
+    <Arrival></Arrival>
+    <Delivery></Delivery>
   </div>
 }
 
