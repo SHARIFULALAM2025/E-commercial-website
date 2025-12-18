@@ -8,3 +8,11 @@ export const uploadImage = async (imageFile) => {
   )
   return data?.data?.url
 }
+//save user data reusable function
+export const saveUser = async (userData) => {
+  const { data } = await axios.post(
+    `${import.meta.env.VITE_serverBaseUrl}/all-user`,
+    userData
+  )
+  return data
+}

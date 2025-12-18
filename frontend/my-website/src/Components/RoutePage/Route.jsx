@@ -15,6 +15,9 @@ import MyPaymentOptions from '../Layout/AccountLayout/MyPaymentOptions'
 import MyCollection from '../Layout/AccountLayout/MyCollection'
 import MyReturn from '../Layout/AccountLayout/MyReturn'
 import MyWishlist from '../Layout/AccountLayout/MyWishlist'
+import Dashboard from '../Pages/Dashboard'
+import Product from '../Pages/Product/Product'
+import Manage from '../Pages/Manage/Manage'
 
 const router = createBrowserRouter([
   {
@@ -75,10 +78,19 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: '/account',
-  //   Component: AccountLayout,
-  //   children: [{ path: '/account/profile', Component: Profile }],
-  // },
+  {
+    path: '/account/dashboard',
+    Component: Dashboard,
+    children: [
+      {
+        path: '/account/dashboard/product',
+        Component: Product,
+      },
+      {
+        path: '/account/dashboard/manage',
+        Component: Manage,
+      },
+    ],
+  },
 ])
 export { router }

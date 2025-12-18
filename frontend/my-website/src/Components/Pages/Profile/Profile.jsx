@@ -58,10 +58,10 @@ const Profile = () => {
                 }}
                 variant="standard"
               >
-                <InputLabel sx={{}} htmlFor="standard-adornment-password">
+                <InputLabel sx={{}} >
                   Name
                 </InputLabel>
-                <Input id="standard-adornment-password" type="text" />
+                <Input type="text" />
               </FormControl>
             </div>
             <div className="">
@@ -86,10 +86,10 @@ const Profile = () => {
                 }}
                 variant="standard"
               >
-                <InputLabel htmlFor="standard-adornment-password">
+                <InputLabel >
                   Phone Number
                 </InputLabel>
-                <Input id="standard-adornment-password" type="number" />
+                <Input  type="number" />
               </FormControl>
             </div>
             <div className="">
@@ -114,10 +114,10 @@ const Profile = () => {
                 }}
                 variant="standard"
               >
-                <InputLabel htmlFor="standard-adornment-password">
+                <InputLabel >
                   Email
                 </InputLabel>
-                <Input id="standard-adornment-password" type="email" />
+                <Input  type="email" />
               </FormControl>
             </div>
           </div>

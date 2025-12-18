@@ -15,7 +15,10 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 import { useContext } from 'react'
 import { AuthContext } from '../../Authentication/AuthContext'
 import { useForm } from 'react-hook-form'
-import { uploadImage } from '../../ReusableComponent/ReusableUploadImage'
+import {
+  saveUser,
+  uploadImage,
+} from '../../ReusableComponent/ReusableUploadImage'
 const Register = () => {
   const { theme, createUser, updateUserImageProfile } = useContext(AuthContext)
   const [showPassword, setShowPassword] = React.useState(false)
@@ -30,23 +33,24 @@ const Register = () => {
     event.preventDefault()
   }
   /* data collect using react hook form */
-const navigate=useNavigate()
-  const { register, handleSubmit,reset } = useForm()
+  const navigate = useNavigate()
+  const { register, handleSubmit, reset } = useForm()
   const handelSignUp = async (data) => {
-    const { image, email, password, name } = data
+    const { image, email, password, name, number } = data
     const myImage = image[0]
 
     try {
       const uploadImage2 = await uploadImage(myImage)
       const result = await createUser(email, password)
       await updateUserImageProfile(name, uploadImage2)
+      await saveUser({ email, name, image: uploadImage2, number })
       console.log(result, data)
-      navigate("/")
+      navigate('/')
       reset()
-
     } catch (error) {
       const ErrorMessage = error.message
       console.log(ErrorMessage)
+      alert(ErrorMessage)
     }
   }
   return (

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { AuthContext } from './AuthContext'
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth'
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import { auth } from './Firebase.init'
-
+const Provider=new GoogleAuthProvider()
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   console.log(user);
@@ -24,6 +24,10 @@ const AuthProvider = ({ children }) => {
   const LogOut = () => {
     return signOut(auth)
   }
+    const googleLogin = () => {
+      setLoading(true)
+      return signInWithPopup(auth, Provider)
+    }
   /* forgat password */
   const handelForgatPassword = (email) => {
     return sendPasswordResetEmail(auth, email)
@@ -56,6 +60,7 @@ const AuthProvider = ({ children }) => {
     updateUserImageProfile,
     loginInUser,
     LogOut,
+    googleLogin,
     handelForgatPassword,
   }
 

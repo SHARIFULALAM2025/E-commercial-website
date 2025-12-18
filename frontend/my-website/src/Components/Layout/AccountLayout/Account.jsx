@@ -15,9 +15,11 @@ import Person3Icon from '@mui/icons-material/Person3'
 import CollectionsIcon from '@mui/icons-material/Collections'
 import AssignmentReturnIcon from '@mui/icons-material/AssignmentReturn'
 import FactCheckIcon from '@mui/icons-material/FactCheck'
+import useRole from '../../Hook/useRole'
+import DashboardIcon from '@mui/icons-material/Dashboard'
 const Account = () => {
   const navigate = useNavigate()
-
+const [role]=useRole()
   const { LogOut } = useContext(AuthContext)
   const handelLogOut = () => {
     LogOut()
@@ -25,33 +27,52 @@ const Account = () => {
   }
   const [open, setOpen] = React.useState(true)
   const data = [
-    { icon: <Person3Icon />, label: 'My profile', path: '' },
+    {
+      icon: <Person3Icon />,
+      label: 'My profile',
+      path: '',
+      role: ['user', 'Admin'],
+    },
     {
       icon: <MenuBookIcon />,
       label: 'Address Book',
       path: '/account/address',
+      role: ['user', 'Admin'],
     },
     {
       icon: <AccountBalanceIcon />,
       label: 'My Payment Options',
       path: '/account/payment',
+      role: ['user', 'Admin'],
     },
     {
       icon: <CollectionsIcon />,
       label: 'My collection',
       path: '/account/collection',
+      role: ['user', 'Admin'],
     },
     {
       icon: <AssignmentReturnIcon />,
       label: 'My Return',
       path: '/account/return',
+      role: ['user', 'Admin'],
     },
     {
       icon: <FactCheckIcon />,
       label: 'My Wishlist',
       path: '/account/wishlist',
+      role: ['user', 'Admin'],
+    },
+    {
+      icon: <DashboardIcon />,
+      label: 'My Dashboard',
+      path: '/account/dashboard',
+      role: ['Admin'],
     },
   ]
+  const filterData = data.filter(item => item.role.includes(role))
+  console.log(filterData)
+
   return (
     <div className="grid grid-cols-12 ">
       <div className="p-2 col-span-2 space-y-3 shadow-xl rounded dark:bg-black">
@@ -96,14 +117,20 @@ const Account = () => {
                 </ListItemButton>
 
                 {open &&
-                  data.map((item, index) => (
-                    <NavLink to={item.path} key={index} className={({isActive})=>isActive?"text-red-400":"text-white"} end>
+                  filterData.map((item, index) => (
+                    <NavLink
+                      to={item.path}
+                      key={index}
+                      className={({ isActive }) =>
+                        isActive ? 'text-red-400' : 'text-white'
+                      }
+                      end
+                    >
                       <ListItemButton
                         key={item.label}
                         sx={{
                           py: 0,
                           minHeight: 32,
-
                         }}
                       >
                         <ListItemIcon sx={{ color: 'inherit', minWidth: 36 }}>
