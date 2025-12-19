@@ -12,7 +12,7 @@ app.use(
         optionSuccessStatus: 200,
     })
 )
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const uri = `mongodb+srv://${process.env.DB_User}:${process.env.DB_Pass}@cluster0.sxgnyhx.mongodb.net/?appName=Cluster0`;
 const client = new MongoClient(uri, {
     serverApi: {
@@ -26,6 +26,7 @@ async function run() {
         const database = client.db('business');
         const AboutCardData = database.collection('card');
         const AllUser = database.collection('user')
+        const AllProduct = database.collection('product')
 
         /* about page data save */
         app.post("/about/card", async (req, res) => {
@@ -34,6 +35,27 @@ async function run() {
             res.send(result)
         })
         /* all user */
+        /* add product */
+        app.post("/all-product", async(req, res) => {
+            const productData = req.body;
+            const currentTime = new Date().toLocaleString('en-GB', {
+                timeZone: "Asia/Dhaka"
+            })
+            productData.createAt = currentTime
+            const result = await AllProduct.insertOne(productData)
+            res.send(result)
+        })
+        app.get("/single-product-details/:id", async(req, res) => {
+            const id = req.params.id
+            const query = { _id: new ObjectId(id) }
+            const result = await AllProduct.findOne(query)
+            res.send(result)
+
+        })
+        app.get("/product-all", async(req, res) => {
+            const result = await AllProduct.find().toArray();
+            res.send(result)
+        })
         app.post("/all-user", async (req, res) => {
             const userInfo = req.body;
           const currentTime = new Date().toLocaleString('en-GB', {

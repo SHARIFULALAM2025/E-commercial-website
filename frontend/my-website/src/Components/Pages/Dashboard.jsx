@@ -206,7 +206,7 @@ const [role]=useRole()
                       {item.icon}
                     </ListItemIcon>
                     <ListItemText
-                      primary={item.name}
+                      primary={item.label}
                       sx={[
                         open
                           ? {

@@ -18,6 +18,7 @@ import MyWishlist from '../Layout/AccountLayout/MyWishlist'
 import Dashboard from '../Pages/Dashboard'
 import Product from '../Pages/Product/Product'
 import Manage from '../Pages/Manage/Manage'
+import ProductDetails from '../Pages/ProductDetails/ProductDetails'
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: "/details/:id",
+        Component:ProductDetails
+      }
     ],
   },
   {

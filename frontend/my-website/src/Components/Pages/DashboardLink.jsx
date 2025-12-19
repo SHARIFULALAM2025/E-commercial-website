@@ -15,3 +15,6 @@ export const dashboardLink = [
     role: ['user', 'Admin'],
   },
 ]
+
+
+export const category=["Game","Electronic","Health and Beauty","Sport and Outdoor","Baby and Toys","Home and Lifestyle"]
