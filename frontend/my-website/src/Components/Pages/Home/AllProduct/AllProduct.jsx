@@ -17,10 +17,15 @@ const AllProduct = () => {
     console.log(product)
 
     return (
-      <div className='grid grid-cols-4 gap-4'>
-        {product.map((item, index) => (
-          <Card item={item} key={index}></Card>
-        ))}
+      <div className="space-y-3">
+        <div className="">
+          <h1 className="text-2xl font-bold">Explore Our Products</h1>
+        </div>
+        <div className="grid grid-cols-4 gap-4">
+          {product.map((item, index) => (
+            <Card item={item} key={index}></Card>
+          ))}
+        </div>
       </div>
     )
 };

@@ -17,4 +17,4 @@ export const dashboardLink = [
 ]
 
 
-export const category=["Game","Electronic","Health and Beauty","Sport and Outdoor","Baby and Toys","Home and Lifestyle"]
+export const category=["Game","Electronic","Health and Beauty","Sport and Outdoor","Baby and Toys","Home and Lifestyle","mobile phone"]
