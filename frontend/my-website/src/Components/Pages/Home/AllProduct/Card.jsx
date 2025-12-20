@@ -11,10 +11,10 @@ const Card = ({ item }) => {
   }
   return (
     <div>
-      <div className="rounded relative">
+      <div className="rounded relative ">
         <div className="bg-[#F5F5F5] p-5 rounded">
           <figure>
-            <img src={item.myImage[0]} alt="" className="mx-auto" />
+            <img src={item.myImage[0]} alt="" className="mx-auto h-32" />
           </figure>
         </div>
         <h1 className="">{item.name}</h1>

@@ -1,6 +1,6 @@
 import React from 'react'
-import { useContext } from 'react'
-import { AuthContext } from '../../Authentication/AuthContext'
+
+
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
 import Input from '@mui/material/Input'
@@ -19,10 +19,12 @@ import TextField from '@mui/material/TextField'
 import useAxiosSecure from '../../Hook/useAxiosSecure'
 import toast from 'react-hot-toast'
 const Product = () => {
-  const { theme } = useContext(AuthContext)
+
   const AxiosSecure = useAxiosSecure()
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit ,reset} = useForm()
   const handelProduct = async (data) => {
+    console.log('button click', data)
+
     try {
       const { name, image, price, category, description } = data
       const imageArray = Array.from(image)
@@ -37,6 +39,7 @@ const Product = () => {
       )
       if (result.data.insertedId) {
         toast.success('successfully added')
+        reset()
       }
     } catch (error) {
       const Message = error.Message
@@ -53,21 +56,6 @@ const Product = () => {
               sx={{
                 m: 1,
                 width: '36ch',
-
-                '& .MuiInputLabel-root': {
-                  color: theme === 'dark' ? 'white' : 'black',
-                },
-
-                '& .MuiInputBase-root': {
-                  color: theme === 'dark' ? 'white' : 'black',
-                },
-                '& .MuiInput-underline:before': {
-                  borderBottomColor: theme === 'dark' ? 'white' : 'black',
-                },
-
-                '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
-                  borderBottomColor: theme === 'dark' ? '#fff' : '#1976d2',
-                },
               }}
               variant="standard"
             >
@@ -80,20 +68,6 @@ const Product = () => {
               sx={{
                 m: 1,
                 width: '36ch',
-                '& .MuiInputLabel-root': {
-                  color: theme === 'dark' ? 'white' : 'black',
-                },
-
-                '& .MuiInputBase-root': {
-                  color: theme === 'dark' ? 'white' : 'black',
-                },
-                '& .MuiInput-underline:before': {
-                  borderBottomColor: theme === 'dark' ? 'white' : 'black',
-                },
-
-                '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
-                  borderBottomColor: theme === 'dark' ? '#fff' : '#1976d2',
-                },
               }}
               variant="standard"
             >
@@ -114,7 +88,7 @@ const Product = () => {
                 label="Category"
               >
                 {category.map((item, index) => (
-                  <MenuItem value={item} key={index}>
+                  <MenuItem value={item.replace(/\s+/g, '')} key={index}>
                     {item}
                   </MenuItem>
                 ))}

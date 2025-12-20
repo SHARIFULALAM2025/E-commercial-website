@@ -36,6 +36,17 @@ async function run() {
         })
         /* all user */
         /* add product */
+        app.get("/category-product", async(req, res) => {
+            const category = req.query.category;
+            const query = { category }
+            const exclude = req.query.exclude
+            if (exclude) {
+                query._id = { $ne: new ObjectId(exclude)}
+
+            }
+            const result = await AllProduct.find(query).toArray()
+            res.send(result)
+        })
         app.post("/all-product", async(req, res) => {
             const productData = req.body;
             const currentTime = new Date().toLocaleString('en-GB', {
