@@ -31,5 +31,25 @@ const bannerData = [
     image: 'https://i.ibb.co.com/MbGd4H2/Frame-608.png',
     des: 'Up to 20% off Voucher',
   },
+  {
+    title: 'HAVIT HV-G92 Gamepad',
+    image: 'https://i.ibb.co.com/DD5RBFLs/Frame-611.png',
+    des: 'Up to 20% off Voucher',
+  },
+  {
+    title: 'AK-900 Wired Keyboard',
+    image: 'https://i.ibb.co.com/N6tDjBQ9/Frame-612-1.png',
+    des: 'Up to 20% off Voucher',
+  },
+  {
+    title: 'Quilted Satin Jacket',
+    image: 'https://i.ibb.co.com/9m0FRnSx/Frame-608-1.png',
+    des: 'Up to 20% off Voucher',
+  },
+  {
+    title: 'Jr. Zoom Soccer Cleats',
+    image: 'https://i.ibb.co.com/5hCVD94P/Frame-608-2.png',
+    des: 'Up to 20% off Voucher',
+  },
 ]
 export { bannerData }

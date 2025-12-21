@@ -75,7 +75,7 @@ const [role]=useRole()
 
   return (
     <div className="grid grid-cols-12 ">
-      <div className="p-2 col-span-2 space-y-3 shadow-xl rounded dark:bg-black">
+      <div className="p-1 col-span-2 space-y-3 shadow-xl rounded dark:bg-black">
         <div className="">
           <Box sx={{ display: 'flex' }}>
             <Paper elevation={0} sx={{ width: '100%' }}>
