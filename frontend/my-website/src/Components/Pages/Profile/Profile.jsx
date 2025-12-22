@@ -153,14 +153,17 @@ const Profile = () => {
               onClick={handelCancel}
               text="Cancel"
               variant="contained"
+              color="error"
             ></ReusableButton>
             <ReusableButton
               text="forgat password"
               variant="contained"
+              color="success"
             ></ReusableButton>
             <ReusableButton
               text="update profile"
               variant="contained"
+
             ></ReusableButton>
           </div>
         </form>

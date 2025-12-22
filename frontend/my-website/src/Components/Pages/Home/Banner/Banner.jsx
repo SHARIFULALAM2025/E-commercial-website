@@ -12,7 +12,7 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import Typography from '@mui/material/Typography'
 import ListItemIcon from '@mui/material/ListItemIcon'
-import {  dataProduct, Women } from './SidebarCategory'
+import {  dataProduct, dataWomen } from './SidebarCategory'
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import useAxiosSecure from '../../../Hook/useAxiosSecure'
@@ -20,7 +20,7 @@ import CategoryCard from './CategoryCard'
 const Banner = () => {
   const [open, setOpen] = React.useState(false)
   const [women, setWomen] = React.useState(true)
-  const [newCategory, setNewCategory] = useState([])
+  const [newCategory, setNewCategory] = useState(dataWomen[0].category)
   console.log(newCategory)
   const AxiosSecure = useAxiosSecure()
 
@@ -150,7 +150,7 @@ const Banner = () => {
                   </ListItemButton>
 
                   {women &&
-                    Women.map((item, index) => (
+                    dataWomen.map((item, index) => (
                       <ListItemButton
                         onClick={() => handelShow(item.category)}
                         key={index}

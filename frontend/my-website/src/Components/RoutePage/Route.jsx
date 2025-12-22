@@ -10,7 +10,7 @@ import Error from '../Error/Error'
 import Profile from '../Pages/Profile/Profile'
 import Account from '../Layout/AccountLayout/Account'
 
-import AddressBook from '../Layout/AccountLayout/AddressBook'
+
 import MyPaymentOptions from '../Layout/AccountLayout/MyPaymentOptions'
 import MyCollection from '../Layout/AccountLayout/MyCollection'
 import MyReturn from '../Layout/AccountLayout/MyReturn'
@@ -19,6 +19,7 @@ import Dashboard from '../Pages/Dashboard'
 import Product from '../Pages/Product/Product'
 import Manage from '../Pages/Manage/Manage'
 import ProductDetails from '../Pages/ProductDetails/ProductDetails'
+import FeedBack from '../Layout/AccountLayout/FeedBack'
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
           },
           {
             path: '/account/address',
-            Component: AddressBook,
+            Component:FeedBack,
           },
           {
             path: '/account/payment',

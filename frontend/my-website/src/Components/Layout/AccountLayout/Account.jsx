@@ -35,9 +35,9 @@ const [role]=useRole()
     },
     {
       icon: <MenuBookIcon />,
-      label: 'Address Book',
+      label: 'Customer Feedback',
       path: '/account/address',
-      role: ['user', 'Admin'],
+      role: [ 'Admin'],
     },
     {
       icon: <AccountBalanceIcon />,

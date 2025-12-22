@@ -10,7 +10,7 @@ import ReusableButton from '../../ReusableComponent/ReusableButton'
 import Social from './Social'
 import { Link, useNavigate } from 'react-router'
 import Tooltip from '@mui/material/Tooltip'
-
+import toast from 'react-hot-toast'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 import { useContext } from 'react'
 import { AuthContext } from '../../Authentication/AuthContext'
@@ -45,12 +45,13 @@ const Register = () => {
       await updateUserImageProfile(name, uploadImage2)
       await saveUser({ email, name, image: uploadImage2, number })
       console.log(result, data)
+      toast.success("successfully register")
       navigate('/')
       reset()
     } catch (error) {
       const ErrorMessage = error.message
       console.log(ErrorMessage)
-      alert(ErrorMessage)
+      toast.error(ErrorMessage)
     }
   }
   return (

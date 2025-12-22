@@ -10,11 +10,29 @@ import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
 import ReusableButton from '../../ReusableComponent/ReusableButton'
 import SendIcon from '@mui/icons-material/Send'
+import { useForm } from 'react-hook-form'
+import useAxiosSecure from '../../Hook/useAxiosSecure'
+import toast from 'react-hot-toast'
 const Contact = () => {
+  const AxiosSecure = useAxiosSecure()
+  const { register, handleSubmit, reset } = useForm()
   const { theme } = useContext(AuthContext)
+  const handelMessage = async (data) => {
+    try {
+      const res = await AxiosSecure.post('/message-all', data)
+      if (res.data.insertedId) {
+        toast.success('message submit successfully!')
+        reset()
+      }
+    } catch (error) {
+      const ErrorMessage = error.ErrorMessage
+      console.log(ErrorMessage)
+      toast.error(ErrorMessage)
+    }
+  }
   return (
     <div className="grid md:grid-cols-12 gap-8 dark:bg-black">
-      <div className="col-span-2 p-2 space-y-3 shadow-xl rounded dark:bg-black">
+      <div className="col-span-12 md:col-span-2 p-2 space-y-3 shadow-xl rounded dark:bg-black">
         <div className="flex gap-2 ">
           <h1 className="">
             <PermPhoneMsgIcon
@@ -42,9 +60,9 @@ const Contact = () => {
         <p className="dark:text-white">Emails: customer@exclusive.com</p>
         <p className="dark:text-white">Emails: support@exclusive.com</p>
       </div>
-      <div className="col-span-10 dark:bg-black rounded shadow-xl p-3">
-        <form className="space-y-2">
-          <div className="md:flex md:flex-row flex-col justify-between">
+      <div className="md:col-span-10 col-span-12 dark:bg-black rounded shadow-xl p-3">
+        <form onSubmit={handleSubmit(handelMessage)} className="space-y-2">
+          <div className="grid md:grid-cols-3 grid-cols-1">
             <div className="">
               <FormControl
                 sx={{
@@ -68,10 +86,8 @@ const Contact = () => {
                 }}
                 variant="standard"
               >
-                <InputLabel sx={{}} htmlFor="standard-adornment-password">
-                  Name
-                </InputLabel>
-                <Input id="standard-adornment-password" type="text" />
+                <InputLabel sx={{}}>Name</InputLabel>
+                <Input {...register('name')} type="text" />
               </FormControl>
             </div>
             <div className="">
@@ -96,10 +112,8 @@ const Contact = () => {
                 }}
                 variant="standard"
               >
-                <InputLabel htmlFor="standard-adornment-password">
-                  Phone Number
-                </InputLabel>
-                <Input id="standard-adornment-password" type="number" />
+                <InputLabel>Phone Number</InputLabel>
+                <Input {...register('number')} type="number" />
               </FormControl>
             </div>
             <div className="">
@@ -124,10 +138,8 @@ const Contact = () => {
                 }}
                 variant="standard"
               >
-                <InputLabel htmlFor="standard-adornment-password">
-                  Email
-                </InputLabel>
-                <Input id="standard-adornment-password" type="email" />
+                <InputLabel>Email</InputLabel>
+                <Input {...register('email')} type="email" />
               </FormControl>
             </div>
           </div>
@@ -155,11 +167,13 @@ const Contact = () => {
                 multiline
                 label="Message"
                 id="fullWidth"
+                {...register('message')}
               />
             </Box>
           </div>
           <div className="flex justify-end items-end">
             <ReusableButton
+              type="submit"
               endIcon={<SendIcon></SendIcon>}
               text="Send Massage"
               variant="contained"

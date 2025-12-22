@@ -6,10 +6,10 @@ export const dataProduct = [
     category: 'Medicine',
   },
   {
-    category: 'Sports & Outdoor',
+    category: 'Sports and Outdoor',
   },
   {
-    category: 'Baby’s & Toys',
+    category: 'Baby’s and Toys',
   },
   {
     category: 'Groceries & Pets',
@@ -18,7 +18,7 @@ export const dataProduct = [
     category: 'Health & Beauty',
   },
 ]
-export const Women = [
+export const dataWomen = [
   {
     category: 'Dresses',
   },
@@ -32,9 +32,9 @@ export const Women = [
     category: 'Footwear',
   },
   {
-    category: 'Bags & Accessories',
+    category: 'Bags and Accessories',
   },
   {
-    category: 'Beauty & Makeup',
+    category: 'Beauty and Makeup',
   },
 ]
