@@ -7,7 +7,7 @@ import Browse from './Browse/Browse'
 import Banner from './Banner/Banner'
 
 const HomePage = () => {
-  return <div className="space-y-6">
+  return <div  className="space-y-6 dark:bg-black">
     <Banner></Banner>
     <Browse></Browse>
     <Enhance></Enhance>

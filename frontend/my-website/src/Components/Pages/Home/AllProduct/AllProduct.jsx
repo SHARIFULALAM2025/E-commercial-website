@@ -17,7 +17,7 @@ const AllProduct = () => {
   })
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-12 space-y-8">
+    <section className="max-w-7xl mx-auto px-4 py-12 space-y-8 dark:bg-black dark:text-white">
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div className="space-y-3">
@@ -27,7 +27,7 @@ const AllProduct = () => {
               Our Products
             </span>
           </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+          <h2 className="text-2xl md:text-3xl font-bold dark:text-white text-gray-900">
             Explore Our Products
           </h2>
         </div>

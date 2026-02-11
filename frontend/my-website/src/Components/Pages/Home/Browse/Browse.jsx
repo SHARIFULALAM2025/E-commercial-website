@@ -40,7 +40,7 @@ const Browse = () => {
   })
 
   return (
-    <div className="max-w-7xl mx-auto px-4 space-y-8 py-10">
+    <div className="max-w-7xl mx-auto px-4 space-y-8 py-10 dark:bg-black dark:text-white">
       {/* Header with Styled Navigation */}
       <div className="flex justify-between items-end border-b pb-4">
         <div className="space-y-2">
@@ -57,14 +57,14 @@ const Browse = () => {
           <button
             onClick={handleBefore}
             disabled={startIndex === 0}
-            className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 disabled:opacity-30 transition-all"
+            className="w-10 h-10 rounded-full bg-gray-100 dark:text-black flex items-center justify-center hover:bg-gray-200 disabled:opacity-30 transition-all"
           >
             <ArrowBackIcon fontSize="small" />
           </button>
           <button
             onClick={handleNext}
             disabled={startIndex + itemPerPage >= browse.length}
-            className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 disabled:opacity-30 transition-all"
+            className="w-10 h-10 rounded-full bg-gray-100 dark:text-black flex items-center justify-center hover:bg-gray-200 disabled:opacity-30 transition-all"
           >
             <ArrowForwardIcon fontSize="small" />
           </button>
@@ -93,7 +93,9 @@ const Browse = () => {
               >
                 {item.icon}
               </div>
-              <p className="text-sm font-medium">{item.category}</p>
+              <p className="text-sm dark:text-black font-medium">
+                {item.category}
+              </p>
             </div>
           )
         })}
